@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import UINotifications from '../components/uiNotifications';
 import { apiRoute, errorTypes } from '../constants';
@@ -12,17 +13,22 @@ export default class LandingContainer extends React.Component {
             data: {},
             filters: [],
             showError: false,
-            errorMessage: ''
+            errorMessage: '',
+            requestingData: false
         };
     }
 
     async getAndSaveData() {
         this.closeError();
+        this.setState({ requestingData: true });
 
         try {
-            const result = await axios.get(apiRoute);
+            const { data } = await axios.get(apiRoute);
+            this.setState({ data });
         } catch(error) {
            this.displayError(errorTypes.REQUESTING_DATA_ERROR.message, error);
+        } finally {
+            this.setState({ requestingData: false });
         }
     }
 
@@ -42,16 +48,16 @@ export default class LandingContainer extends React.Component {
     }
 
     render() {
-        const { data, showError, errorMessage } = this.state;
+        const { data, showError, errorMessage, requestingData } = this.state;
 
         return (
             <>
-                <div>Hello there!</div>
-                { showError ?
-                        <UINotifications message={errorMessage} onClose={this.closeError}/>
-                    :
-                        <></>
-                }
+                { requestingData ? <LinearProgress /> : <div>Hello there</div> }
+                <UINotifications
+                    show={showError}
+                    message={errorMessage}
+                    onClose={this.closeError}
+                />
             </>
         );
     }

@@ -1,4 +1,8 @@
 import React from 'react';
+import axios from 'axios';
+
+import UINotifications from '../components/uiNotifications';
+import { apiRoute, errorTypes } from '../constants';
 
 export default class LandingContainer extends React.Component {
     constructor(props) {
@@ -6,19 +10,49 @@ export default class LandingContainer extends React.Component {
 
         this.state = {
             data: {},
-            filters: []
+            filters: [],
+            showError: false,
+            errorMessage: ''
         };
     }
 
+    async getAndSaveData() {
+        this.closeError();
+
+        try {
+            const result = await axios.get(apiRoute);
+        } catch(error) {
+           this.displayError(errorTypes.REQUESTING_DATA_ERROR.message, error);
+        }
+    }
+
+    displayError(message = 'Something went wrong', error) {
+        console.error(message, error);
+        this.setState({ showError: true, errorMessage: message });
+    }
+
+    closeError = () => {
+        this.setState({ showError: false, errorMessage: '' });
+    }
+
     componentDidMount() {
-        //Request data
+        this.getAndSaveData().catch(error => {
+            this.displayError(errorTypes.REQUESTING_DATA_ERROR.message, error);
+        });
     }
 
     render() {
-        const { data } = this.state;
+        const { data, showError, errorMessage } = this.state;
 
         return (
-            <div>Hello there!</div>
+            <>
+                <div>Hello there!</div>
+                { showError ?
+                        <UINotifications message={errorMessage} onClose={this.closeError}/>
+                    :
+                        <></>
+                }
+            </>
         );
     }
 }

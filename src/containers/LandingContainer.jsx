@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import UINotifications from '../components/UINotifications';
+import UINotifications from '../components/uiNotifications';
 import ContentContainer from './ContentContainer';
 import { apiRoute, errorTypes } from '../constants';
 

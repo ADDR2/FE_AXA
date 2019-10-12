@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SidePanel from '../components/SidePanel';
+import ContentPanel from '../components/ContentPanel';
 import '../styles/containers/ContentContainer.scss';
 
 class ContentContainer extends React.Component {
@@ -16,7 +17,7 @@ class ContentContainer extends React.Component {
     changeCity = (newCity = 'All') => {
         const { data } = this.props;
 
-        (newCity in data || newCity === 'All') && this.setState({ selectedCity: newCity });
+        newCity in data && this.setState({ selectedCity: newCity });
     }
 
     render() {
@@ -26,9 +27,12 @@ class ContentContainer extends React.Component {
         return (
             <div className="content-container">
                 <SidePanel
-                    cities={[ 'All', ...Object.keys(data) ]}
+                    cities={Object.keys(data)}
                     selectedCity={selectedCity}
                     onChangeCity={this.changeCity}
+                />
+                <ContentPanel
+                    data={data[selectedCity]}
                 />
             </div>
         );

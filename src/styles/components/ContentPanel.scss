@@ -1,0 +1,94 @@
+@import '../globals/colors.scss';
+@import '../globals/layout.scss';
+
+.content-panel-container {
+    background-color: $content-panel-background;
+    height: 100vh;
+    overflow: auto;
+}
+
+.content-panel-thumbnail-list {
+    display: grid;
+    padding: $separation-space $side-panel-icon-font-size;
+    grid-column-gap: 120px;
+    grid-row-gap: $separation-space;
+}
+
+.content-panel-pagination-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: $separation-space calc(2*#{$separation-space}) $separation-space 0;
+    color: $font-color;
+
+    & > .content-pagination-prev {
+        margin: 0 1rem 0 0;
+        cursor: pointer;
+    }
+
+    & > .content-pagination-next {
+        margin: 0 0 0 1.2rem;
+        cursor: pointer;
+    }
+
+    & > .pagination-disabled {
+        color: $side-panel-container-background;
+        cursor: default;
+    }
+}
+
+.page-item {
+    padding: 0 $separation-space;
+    border: 1px solid $font-color;
+    user-select: none;
+    margin: 0;
+    
+    &.page-selectable {
+        cursor: pointer;
+    }
+
+    &.current-page {
+        background-color: $side-panel-option-color;
+    }
+}
+
+@media screen and (max-width: 1529px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
+@media screen and (max-width: 1289px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
+@media screen and (max-width: 1079px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
+@media screen and (max-width: 849px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
+@media screen and (max-width: 399px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width;
+    }
+}
+
+@media screen and (min-width: 1530px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}

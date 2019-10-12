@@ -28,16 +28,21 @@ class ContentPanel extends React.Component {
 
         return (
             <div className="content-panel-container">
-                {
-                    gnomes.slice(0, 30).map((gnome, index) => (
-                        <GnomeThumbnail
-                            key={`gnome-${index}`}
-                            gnome={gnome}
-                            index={index}
-                            onSelected={this.selectGnomeByIndex}
-                        />
-                    ))
-                }
+                <div className="content-panel-thumbnail-list">
+                    {
+                        gnomes.slice(0, 30).map((gnome, index) => (
+                            <GnomeThumbnail
+                                key={`gnome-${index}`}
+                                gnome={gnome}
+                                index={index}
+                                onSelected={this.selectGnomeByIndex}
+                            />
+                        ))
+                    }
+                </div>
+                <div className="content-panel-pagination-container">
+                    { gnomes.length / 30 }
+                </div>
                 <GnomeDialog
                     show={selectedGnome >= 0}
                     gnome={gnomes[selectedGnome < 0 ? 0 : selectedGnome]}

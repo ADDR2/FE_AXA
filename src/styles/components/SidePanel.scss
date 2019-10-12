@@ -9,8 +9,7 @@
     &.side-panel-full-width {
         width: 20%;
 
-        & + .content-panel-container {
-            width: 80%;
+        & + .content-panel-container > .content-panel-thumbnail-list {
             grid-column-gap: 80px;
         }
     }

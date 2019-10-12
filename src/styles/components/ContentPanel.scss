@@ -2,54 +2,56 @@
 @import '../globals/layout.scss';
 
 .content-panel-container {
+    background-color: $content-panel-background;
+    height: 100vh;
+    overflow: auto;
+}
+
+.content-panel-thumbnail-list {
     display: grid;
+    padding: $separation-space $side-panel-icon-font-size;
     grid-column-gap: 120px;
     grid-row-gap: $separation-space;
-    padding: $separation-space $side-panel-icon-font-size;
-    width: 100%;
-    height: calc(100vh - 2*#{$separation-space});
-    overflow: auto;
-    background-color: $content-panel-background;
 }
 
 @media screen and (max-width: 1529px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
     }
 }
 
 @media screen and (max-width: 1289px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
     }
 }
 
 @media screen and (max-width: 1079px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
     }
 }
 
 @media screen and (max-width: 849px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
     }
 }
 
 @media screen and (max-width: 639px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width;
     }
 }
 
 @media screen and (max-width: 399px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width;
     }
 }
 
 @media screen and (min-width: 1530px) {
-    .content-panel-container {
+    .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
     }
 }

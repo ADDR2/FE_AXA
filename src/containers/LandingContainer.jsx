@@ -14,7 +14,7 @@ export default class LandingContainer extends React.Component {
             data: {},
             showError: false,
             errorMessage: '',
-            requestingData: false
+            requestingData: true
         };
     }
 
@@ -24,12 +24,22 @@ export default class LandingContainer extends React.Component {
 
         try {
             const { data } = await axios.get(apiRoute);
-            this.setState({ data });
+            this.setState({ data: this.processData(data) });
         } catch(error) {
            this.displayError(errorTypes.REQUESTING_DATA_ERROR.message, error);
         } finally {
             this.setState({ requestingData: false });
         }
+    }
+
+    processData(data = {}) {
+        let allCities = [];
+
+        for(const cityGnomes of Object.values(data)) {
+            allCities = [ ...allCities, ...cityGnomes ];
+        }
+
+        return { All: allCities, ...data };
     }
 
     displayError(message = 'Something went wrong', error) {

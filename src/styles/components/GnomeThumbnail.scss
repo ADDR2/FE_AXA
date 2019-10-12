@@ -1,0 +1,22 @@
+@import '../globals/colors.scss';
+@import '../globals/layout.scss';
+
+.gnome-thumbnail-container {
+    cursor: pointer;
+
+    & > .gnome-avatar {
+        width: $gnome-avatar-width;
+        height: $gnome-avatar-width;
+    }
+
+    & > .gnome-name {
+        margin: 0;
+        text-align: center;
+        color: $font-color;
+        font-size: $gnome-name-font-size;
+    }
+
+    &:active {
+        background-color: $side-panel-option-color;
+    }
+}

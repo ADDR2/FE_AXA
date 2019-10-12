@@ -1,4 +1,5 @@
 @import '../globals/colors.scss';
+@import '../globals/layout.scss';
 
 .side-panel-container {
     height: 100vh;
@@ -7,23 +8,28 @@
 
     &.side-panel-full-width {
         width: 20%;
+
+        & + .content-panel-container {
+            width: 80%;
+            grid-column-gap: 80px;
+        }
     }
 }
 
 .side-panel-header {
     display: flex;
-    color: white;
+    color: $font-color;
     border-bottom: 1px solid $side-panel-option-color;
 
     & > .side-panel-icon {
-        font-size: 28px;
-        margin: 1rem;
+        font-size: $side-panel-icon-font-size;
+        margin: $separation-space;
         cursor: pointer;
     }
 
     & > .side-panel-header-title {
         margin: auto;
-        font-size: 28px;
+        font-size: $side-panel-icon-font-size;
     }
 }
 
@@ -33,13 +39,13 @@
 }
 
 .side-panel-option {
-    padding: 1rem;
-    color: white;
+    padding: $separation-space;
+    color: $font-color;
     border-bottom: 1px solid $side-panel-option-color;
     cursor: pointer;
 
     & > .side-panel-city-name {
-        margin: 0 0 0 2rem;
+        margin: 0 0 0 calc(2*#{$separation-space});
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

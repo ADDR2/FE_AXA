@@ -1,0 +1,51 @@
+@import '../globals/colors.scss';
+
+.side-panel-container {
+    height: 100vh;
+    background-color: $side-panel-container-background;
+    border-right: 2px solid $side-panel-container-border;
+
+    &.side-panel-full-width {
+        width: 20%;
+    }
+}
+
+.side-panel-header {
+    display: flex;
+    color: white;
+    border-bottom: 1px solid $side-panel-option-color;
+
+    & > .side-panel-icon {
+        font-size: 28px;
+        margin: 1rem;
+        cursor: pointer;
+    }
+
+    & > .side-panel-header-title {
+        margin: auto;
+        font-size: 28px;
+    }
+}
+
+.side-panel-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.side-panel-option {
+    padding: 1rem;
+    color: white;
+    border-bottom: 1px solid $side-panel-option-color;
+    cursor: pointer;
+
+    & > .side-panel-city-name {
+        margin: 0 0 0 2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &.selected-option {
+        background-color: $side-panel-option-color;
+    }
+}

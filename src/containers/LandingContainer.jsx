@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import UINotifications from '../components/uiNotifications';
+import UINotifications from '../components/UINotifications';
+import ContentContainer from './ContentContainer';
 import { apiRoute, errorTypes } from '../constants';
 
 export default class LandingContainer extends React.Component {
@@ -11,7 +12,6 @@ export default class LandingContainer extends React.Component {
 
         this.state = {
             data: {},
-            filters: [],
             showError: false,
             errorMessage: '',
             requestingData: false
@@ -52,7 +52,7 @@ export default class LandingContainer extends React.Component {
 
         return (
             <>
-                { requestingData ? <LinearProgress /> : <div>Hello there</div> }
+                { requestingData ? <LinearProgress /> : <ContentContainer data={data}/> }
                 <UINotifications
                     show={showError}
                     message={errorMessage}

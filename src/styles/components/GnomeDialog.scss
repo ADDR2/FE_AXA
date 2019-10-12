@@ -1,4 +1,5 @@
 @import '../globals/colors.scss';
+@import '../globals/layout.scss';
 
 .gnome-dialog-container {
     & .gnome-dialog-app-bar {
@@ -8,6 +9,67 @@
 
     & .gnome-dialog-title {
         flex: 1;
-        margin-left: 1rem;
+        margin-left: $separation-space;
     }
+}
+
+.gnome-avatar-container {
+    background-color: $content-panel-background;
+    padding: $separation-space calc(4*#{$separation-space}) 0 0;
+
+    & > .gnome-dialog-avatar {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+}
+
+.gnome-dialog-content {
+    display: flex;
+    padding: $info-space-separation;
+    height: calc(100vh - #{$gnome-dialog-header-height});
+    background-color: $content-panel-background;
+}
+
+.gnome-content-info {
+    color: $font-color;
+    text-align: center;
+    margin-right: calc(#{$separation-space}/2);
+    width: calc(#{$info-section-width} - #{$info-space-separation} - #{$separation-space}/2);
+}
+
+.info-title {
+    margin: 0;
+    padding: $separation-space 0;
+    border-bottom: 1px solid $font-color;
+}
+
+.gnome-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: $separation-space;
+    margin: $separation-space 0;
+
+    & > .info-key {
+        margin: 0;
+        text-align: right;
+    }
+    
+    & > .info-value {
+        margin: 0;
+        text-align: left;
+    }
+}
+
+.gnome-content-relations {
+    text-align: center;
+    margin-left: calc(#{$separation-space}/2);
+    color: $font-color;
+    width: calc(#{$info-section-width} - #{$info-space-separation} - #{$separation-space}/2);
+}
+
+.gnome-content-table {
+    width: 100%;
+    margin: 1rem 0 0 0;
+    text-align: center;
 }

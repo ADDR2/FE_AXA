@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GnomeThumbnail from './GnomeThumbnail';
-import  GnomeDialog from './GnomeDialog';
+import GnomeDialog from './GnomeDialog';
 import '../styles/components/ContentPanel.scss';
 
 class ContentPanel extends React.Component {

@@ -1,0 +1,13 @@
+@import '../globals/colors.scss';
+@import '../globals/layout.scss';
+
+.app-header {
+    text-align: center;
+    background-color: $side-panel-option-color;
+}
+
+.app-header-title  {
+    padding: $separation-space 0;
+    color: $font-color;
+    margin: 0;
+}

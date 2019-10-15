@@ -15,7 +15,10 @@ class ContentPanel extends React.Component {
         this.state = {
             selectedGnome: -1,
             currentPage: 0,
-            currentFilter: '',
+            currentFilter: {
+                filter: '',
+                value: ''
+            },
             currentSort: ''
         };
     }
@@ -44,10 +47,17 @@ class ContentPanel extends React.Component {
         return itemA[attribute] > itemB[attribute] ? 1 : -1;
     }
 
+    applyFilter({ filter, value } = {}, list = []) {
+        return list.filter(item => {
+            return String(item[filter]).toLocaleLowerCase().includes(String(value).toLocaleLowerCase());
+        });
+    }
+
     render() {
         const { selectedGnome, currentPage, currentFilter, currentSort } = this.state;
         const { data } = this.props;
         let gnomes = [ ...data ];
+        currentFilter.filter && currentFilter.value && (gnomes = this.applyFilter(currentFilter, gnomes));
         currentSort && (gnomes = gnomes.sort(this.applySort.bind(this, currentSort)));
 
         const isMultipleOf30 = gnomes.length % 30 === 0;
@@ -59,7 +69,7 @@ class ContentPanel extends React.Component {
                 <Toolbar
                     currentFilter={currentFilter}
                     currentSort={currentSort}
-                    onFilter={() => {}}
+                    onFilter={filter => this.setState({ currentFilter: { ...currentFilter, ...filter } })}
                     onSort={attribute => this.setState({ currentSort: attribute })}
                 />
                 <div className="content-panel-thumbnail-list">

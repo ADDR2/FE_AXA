@@ -1,5 +1,6 @@
 @import '../globals/colors.scss';
 @import '../globals/layout.scss';
+@import '../globals/mixins.scss';
 
 .filters-and-sorts {
     width: 100%;
@@ -7,6 +8,7 @@
     justify-content: space-between;
     height: calc(#{$side-panel-icon-font-size} + 2*#{$separation-space});
     background-color: $side-panel-container-background;
+    border-bottom: 2px solid $side-panel-container-border;
 }
 
 .content-panel-sorts {
@@ -26,5 +28,32 @@
 
     &.selected-sort {
         background-color: $side-panel-option-color;
+    }
+}
+
+.content-panel-filters {
+    width: 100%;
+    display: flex;
+
+    & > .filter-label{
+        margin: auto $separation-space;
+        color: $font-color;
+    }
+
+    & > .content-panel-dropdown {
+        @include applyColorToInput;
+    }
+
+    & > .filter-text {
+        margin: 0 0 0 $separation-space;
+
+        & > label {
+            color: $font-color;
+        }
+
+        & > div {
+            @include applyColorToInput;
+            margin: 13px 0 0 0;
+        }
     }
 }

@@ -5,3 +5,23 @@ export const errorTypes = {
 };
 
 export const uiNotificationsTimer = 5000;
+
+export const gnomeSortableAttributes = [
+    'name',
+    'age',
+    'hair_color',
+    'height',
+    'id',
+    'weight'
+];
+
+export const gnomeFilterAttributes = [
+    'name',
+    'friends',
+    'professions',
+    'age',
+    'hair_color',
+    'height',
+    'id',
+    'weight'
+];

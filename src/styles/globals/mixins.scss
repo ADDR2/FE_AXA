@@ -1,0 +1,24 @@
+@import './colors.scss';
+@import './layout.scss';
+
+@mixin applyColorToInput {
+    width: 200px;
+    color: $font-color;
+    margin: $separation-space 0;
+
+    &::before {
+        border-bottom: 1px solid $font-color;
+    }
+
+    &::after {
+        border-bottom: 2px solid $side-panel-option-color;
+    }
+
+    &:hover:not(.Mui-disabled)::before {
+        border-bottom: 2px solid $side-panel-container-border;
+    }
+
+    & > svg {
+        color: $font-color;
+    }
+}

@@ -1,0 +1,59 @@
+@import '../globals/colors.scss';
+@import '../globals/layout.scss';
+@import '../globals/mixins.scss';
+
+.filters-and-sorts {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: calc(#{$side-panel-icon-font-size} + 2*#{$separation-space});
+    background-color: $side-panel-container-background;
+    border-bottom: 2px solid $side-panel-container-border;
+}
+
+.content-panel-sorts {
+    display: flex;
+    margin: calc(#{$separation-space}/2);
+    border-radius: 10px;
+    border: 1px solid $font-color;
+    color: $font-color;
+}
+
+.content-panel-sort-option {
+    cursor: pointer;
+    padding: 0.6rem;
+    border-radius: 10px;
+    min-width: 50px;
+    text-align: center;
+
+    &.selected-sort {
+        background-color: $side-panel-option-color;
+    }
+}
+
+.content-panel-filters {
+    width: 100%;
+    display: flex;
+
+    & > .filter-label{
+        margin: auto $separation-space;
+        color: $font-color;
+    }
+
+    & > .content-panel-dropdown {
+        @include applyColorToInput;
+    }
+
+    & > .filter-text {
+        margin: 0 0 0 $separation-space;
+
+        & > label {
+            color: $font-color;
+        }
+
+        & > div {
+            @include applyColorToInput;
+            margin: 13px 0 0 0;
+        }
+    }
+}

@@ -46,7 +46,8 @@ class ContentPanel extends React.Component {
 
     render() {
         const { selectedGnome, currentPage, currentFilter, currentSort } = this.state;
-        let { data: gnomes } = this.props;
+        const { data } = this.props;
+        let gnomes = [ ...data ];
         currentSort && (gnomes = gnomes.sort(this.applySort.bind(this, currentSort)));
 
         const isMultipleOf30 = gnomes.length % 30 === 0;

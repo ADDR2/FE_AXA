@@ -20,7 +20,9 @@ const Toolbar = ({ onFilter, onSort, currentFilter, currentSort }) => {
                                 content-panel-sort-option
                                 ${currentSort === attribute ? 'selected-sort' : ''}
                             `}
-                            onClick={() => onSort(attribute)}
+                            onClick={() => onSort(
+                                currentSort === attribute ? '' : attribute
+                            )}
                         >{ upperFirst(camelCase(attribute)) }</div>
                     ))
                 }

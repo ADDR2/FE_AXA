@@ -1,0 +1,14 @@
+@import '../globals/colors.scss';
+@import '../globals/layout.scss';
+
+.snackbar-message-container {
+    display: flex;
+
+    & > .snackbar-message {
+        margin: auto 0 0 $separation-space;
+    }
+}
+
+.snackbar-error-type > div {
+    background-color: $snackbar-error-background;
+}

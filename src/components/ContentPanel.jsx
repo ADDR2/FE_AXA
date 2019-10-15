@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
+import Toolbar from './Toolbar';
 import GnomeThumbnail from './GnomeThumbnail';
 import GnomeDialog from './GnomeDialog';
 import '../styles/components/ContentPanel.scss';
@@ -13,7 +14,9 @@ class ContentPanel extends React.Component {
 
         this.state = {
             selectedGnome: -1,
-            currentPage: 0
+            currentPage: 0,
+            currentFilter: '',
+            currentSort: ''
         };
     }
 
@@ -37,15 +40,27 @@ class ContentPanel extends React.Component {
         return [1, '...', currentPage, currentPage + 1, currentPage + 2, '...', totalPages];
     }
 
+    applySort(attribute = '', itemA, itemB) {
+        return itemA[attribute] > itemB[attribute] ? 1 : -1;
+    }
+
     render() {
-        const { data: gnomes } = this.props;
-        const { selectedGnome, currentPage } = this.state;
+        const { selectedGnome, currentPage, currentFilter, currentSort } = this.state;
+        let { data: gnomes } = this.props;
+        currentSort && (gnomes = gnomes.sort(this.applySort.bind(this, currentSort)));
+
         const isMultipleOf30 = gnomes.length % 30 === 0;
         const totalPages = isMultipleOf30 ? (gnomes.length/30) : parseInt((gnomes.length/30) + 1);
         const gnomesSlice = currentPage*30;
 
         return (
             <div className="content-panel-container">
+                <Toolbar
+                    currentFilter={currentFilter}
+                    currentSort={currentSort}
+                    onFilter={() => {}}
+                    onSort={attribute => this.setState({ currentSort: attribute })}
+                />
                 <div className="content-panel-thumbnail-list">
                     {
                         gnomes.slice(gnomesSlice, gnomesSlice + 30).map((gnome, index) => (

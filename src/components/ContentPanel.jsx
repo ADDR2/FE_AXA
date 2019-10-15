@@ -130,11 +130,15 @@ class ContentPanel extends React.Component {
                         `}
                     />
                 </div>
-                <GnomeDialog
-                    show={selectedGnome >= 0}
-                    gnome={gnomes[selectedGnome < 0 ? 0 : selectedGnome]}
-                    onClose={this.closeDialog}
-                />
+                { selectedGnome >= 0 ?
+                        <GnomeDialog
+                            show={selectedGnome >= 0}
+                            gnome={gnomes[selectedGnome < 0 ? 0 : selectedGnome]}
+                            onClose={this.closeDialog}
+                        />
+                    :
+                        <></>
+                }
             </div>
         );
     }

@@ -32,15 +32,25 @@ class ContentPanel extends React.Component {
     }
 
     getPages(totalPages = 1, currentPage = 0) {
-        if (currentPage < 3) {
-            return [1, 2, 3, 4, 5, '...', totalPages];
-        }
+        if (totalPages > 5) {
+            if (currentPage < 3) {
+                return [1, 2, 3, 4, 5, '...', totalPages];
+            }
+    
+            if (currentPage >= totalPages - 3) {
+                return [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+            }
+    
+            return [1, '...', currentPage, currentPage + 1, currentPage + 2, '...', totalPages];
+        } else {
+            const result = [];
 
-        if (currentPage >= totalPages - 3) {
-            return [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
-        }
+            for(let index = 0; index < totalPages; index++) {
+                result.push(index+1);
+            }
 
-        return [1, '...', currentPage, currentPage + 1, currentPage + 2, '...', totalPages];
+            return result;
+        }
     }
 
     applySort(attribute = '', itemA, itemB) {
@@ -69,7 +79,10 @@ class ContentPanel extends React.Component {
                 <Toolbar
                     currentFilter={currentFilter}
                     currentSort={currentSort}
-                    onFilter={filter => this.setState({ currentFilter: { ...currentFilter, ...filter } })}
+                    onFilter={filter => this.setState({
+                        currentFilter: { ...currentFilter, ...filter },
+                        currentPage: 0
+                    })}
                     onSort={attribute => this.setState({ currentSort: attribute })}
                 />
                 <div className="content-panel-thumbnail-list">

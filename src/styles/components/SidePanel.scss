@@ -1,8 +1,9 @@
 @import '../globals/colors.scss';
 @import '../globals/layout.scss';
+@import '../globals/mixins.scss';
 
 .side-panel-container {
-    height: 100vh;
+    @include panelHeight;
     background-color: $side-panel-container-background;
     border-right: 2px solid $side-panel-container-border;
 

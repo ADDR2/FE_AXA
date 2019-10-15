@@ -5,6 +5,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import UINotifications from '../components/uiNotifications';
 import ContentContainer from './ContentContainer';
 import { apiRoute, errorTypes } from '../constants';
+import '../styles/containers/LandingContainer.scss';
 
 export default class LandingContainer extends React.Component {
     constructor(props) {
@@ -62,6 +63,9 @@ export default class LandingContainer extends React.Component {
 
         return (
             <>
+                <div className="app-header">
+                    <h2 className="app-header-title">Gnomebook</h2>
+                </div>
                 { requestingData ?
                         <LinearProgress />
                     :

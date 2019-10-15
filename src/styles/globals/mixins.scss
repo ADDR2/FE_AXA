@@ -22,3 +22,7 @@
         color: $font-color;
     }
 }
+
+@mixin panelHeight {
+    height: calc(100vh - #{$app-header-title-size} - 2*#{$separation-space});
+}

@@ -1,9 +1,10 @@
 @import '../globals/colors.scss';
 @import '../globals/layout.scss';
+@import '../globals/mixins.scss';
 
 .content-panel-container {
     background-color: $content-panel-background;
-    height: 100vh;
+    @include panelHeight;
     overflow: auto;
     width: 100%;
 }

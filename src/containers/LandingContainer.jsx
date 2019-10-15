@@ -62,7 +62,11 @@ export default class LandingContainer extends React.Component {
 
         return (
             <>
-                { requestingData ? <LinearProgress /> : <ContentContainer data={data}/> }
+                { requestingData ?
+                        <LinearProgress />
+                    :
+                        (Object.keys(data).length ? <ContentContainer data={data}/> : <></>)
+                }
                 <UINotifications
                     show={showError}
                     message={errorMessage}

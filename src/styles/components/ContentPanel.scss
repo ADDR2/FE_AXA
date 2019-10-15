@@ -5,6 +5,7 @@
     background-color: $content-panel-background;
     height: 100vh;
     overflow: auto;
+    width: 100%;
 }
 
 .content-panel-thumbnail-list {
@@ -51,6 +52,18 @@
     }
 }
 
+@media screen and (max-width: 2009px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
+@media screen and (max-width: 1769px) {
+    .content-panel-thumbnail-list {
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+    }
+}
+
 @media screen and (max-width: 1529px) {
     .content-panel-thumbnail-list {
         grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
@@ -87,8 +100,8 @@
     }
 }
 
-@media screen and (min-width: 1530px) {
+@media screen and (min-width: 2010px) {
     .content-panel-thumbnail-list {
-        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
+        grid-template-columns: $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width $gnome-avatar-width;
     }
 }

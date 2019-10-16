@@ -73,6 +73,7 @@ class ContentPanel extends React.Component {
         const isMultipleOf30 = gnomes.length % 30 === 0;
         const totalPages = isMultipleOf30 ? (gnomes.length/30) : parseInt((gnomes.length/30) + 1);
         const gnomesSlice = currentPage*30;
+        const slicedList = gnomes.slice(gnomesSlice, gnomesSlice + 30);
 
         return (
             <div className="content-panel-container">
@@ -87,7 +88,7 @@ class ContentPanel extends React.Component {
                 />
                 <div className="content-panel-thumbnail-list">
                     {
-                        gnomes.slice(gnomesSlice, gnomesSlice + 30).map((gnome, index) => (
+                        slicedList.map((gnome, index) => (
                             <GnomeThumbnail
                                 key={`gnome-${index}`}
                                 gnome={gnome}
@@ -98,6 +99,7 @@ class ContentPanel extends React.Component {
                     }
                 </div>
                 <div className="content-panel-pagination-container">
+                    <p className="pagination-amount-indicator">Showing { slicedList.length } of { gnomes.length }</p>
                     <ArrowBackIosIcon
                         onClick={() => (
                             currentPage > 0 && this.setState({ currentPage: currentPage - 1 })

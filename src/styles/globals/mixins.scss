@@ -26,3 +26,13 @@
 @mixin panelHeight {
     height: calc(100vh - #{$app-header-title-size} - 2*#{$separation-space});
 }
+
+@mixin contentPanelHeight {
+    height: calc(
+        100vh -
+        ( #{$app-header-title-size} + 2*#{$separation-space} ) -
+        ( #{$side-panel-icon-font-size} + 2*#{$separation-space} + #{$border-size} ) -
+        ( 2*#{$separation-space} ) -
+        ( 2*#{$separation-space} + #{$pagination-size} + #{$border-size} )
+    );
+}
